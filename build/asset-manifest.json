@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.c2ad8838.css",
+    "main.css": "/static/css/main.a1ab8a89.css",
     "main.js": "/static/js/main.ed4a9ab0.js",
-    "static/media/عنوان[The_font_2022 ].ttf": "/static/media/عنوان[The_font_2022 ].c6fc781566348bd4017b.ttf",
+    "static/media/a.ttf": "/static/media/a.c6fc781566348bd4017b.ttf",
     "index.html": "/index.html",
-    "main.c2ad8838.css.map": "/static/css/main.c2ad8838.css.map",
+    "main.a1ab8a89.css.map": "/static/css/main.a1ab8a89.css.map",
     "main.ed4a9ab0.js.map": "/static/js/main.ed4a9ab0.js.map"
   },
   "entrypoints": [
-    "static/css/main.c2ad8838.css",
+    "static/css/main.a1ab8a89.css",
     "static/js/main.ed4a9ab0.js"
   ]
 }
