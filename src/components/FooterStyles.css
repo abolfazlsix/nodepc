@@ -1,0 +1,54 @@
+/* ====== Footer Fixed ====== */
+.footer-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  height: 70px;
+  background: #fff;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  box-shadow: 0 -3px 10px rgba(0,0,0,0.12);
+
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+
+  z-index: 9999; /* همیشه روی همه چیز باشد */
+  padding: 5px 0;
+}
+
+/* ====== جلوگیری از افتادن محتوا زیر فوتر ====== */
+.with-footer-padding {
+  padding-bottom: 100px !important;   /* ارتفاع فوتر + فاصله */
+}
+
+/* ====== آیکون ها ====== */
+.footer-item {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.footer-item img {
+  width: 34px;
+  height: 34px;
+}
+
+.footer-item.active {
+  background-color: #0784c9;
+}
+
+.footer-item.active img {
+  filter: brightness(0) invert(1);
+}

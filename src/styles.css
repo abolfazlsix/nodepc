@@ -1,0 +1,76 @@
+/* mobile-first, max-width 600 constraint placed in container */
+:root {
+  --accent: #1976d2;
+  --muted: #666;
+}
+*{box-sizing:border-box}
+body{
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin:0;
+  background:#fafafa;
+  color:#111;
+}
+.app{
+  max-width:600px;
+  margin:0 auto;
+  min-height:100vh;
+  background:white;
+  border-left:1px solid #eee;
+  border-right:1px solid #eee;
+}
+
+/* header */
+.header{
+  padding:12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #eee;
+}
+.container{padding:12px}
+
+/* list card */
+.card{
+  border:1px solid #eee;
+  border-radius:10px;
+  padding:10px;
+  margin-bottom:10px;
+  background:white;
+}
+.post-image{width:100%;height:200px;object-fit:cover;border-radius:8px;margin-top:8px}
+
+/* footer mobile nav */
+.footer-nav{
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:600px;
+  display:flex;
+  justify-content:space-around;
+  padding:8px 0;
+  background:white;
+  border-top:1px solid #ddd;
+}
+.btn{padding:8px 12px;border-radius:8px;border:none;background:var(--accent);color:white}
+.icon-btn{background:transparent;border:none;color:var(--muted)}
+
+/* small profile */
+.profile-row{display:flex;gap:10px;align-items:center}
+.avatar{width:44px;height:44px;border-radius:50%;object-fit:cover}
+
+/* responsive */
+@media(min-width:601px){
+  body{background:#eee}
+}
+@font-face {
+  font-family: "IRANSans";
+  src: url("./عنوان[The_font_2022\ ].ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "IRANSans", sans-serif;
+}

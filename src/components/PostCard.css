@@ -1,0 +1,45 @@
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  padding: 12px;
+  margin-bottom: 12px;
+  font-size: 12px;
+  height: auto;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.post-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.like-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  border: 1px solid #228BE6;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.like-btn.liked {
+  background: #228BE6;
+}
+
+.like-btn.liked img {
+  filter: brightness(0) invert(1); /* سفید کردن آیکون داخل */
+}

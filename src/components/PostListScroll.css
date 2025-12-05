@@ -1,0 +1,45 @@
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 12px;
+  padding-bottom: 8px;
+}
+
+.scroll-item {
+  min-width: 250px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  padding: 12px;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.scroll-item:hover {
+  transform: translateY(-4px);
+}
+
+.post-like-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid #228BE6;
+  background: transparent;
+  color: #228BE6;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 600;
+}
+
+.post-like-btn.liked {
+  background: #228BE6;
+  color: #fff;
+}
+
+.post-like-btn img {
+  width: 18px;
+  height: 18px;
+}

@@ -1,0 +1,46 @@
+.adpost{
+    width: 90%;
+    margin: 10px 5% 10px 5%;
+    height: auto;
+    background-color: #228BE6;
+    border-radius: 24px;
+    direction: rtl;
+    color: #228BE6;
+    padding: 10px;
+}
+.adpost input,textarea{
+    width: 90%;
+    margin: 1px 5%;
+    direction: rtl;
+    font-size: 17px;
+}
+.adpost textarea{
+
+    height: 100px;
+    border-radius: 10px;
+}
+.adpost input{
+    height: 40px;
+    border-radius: 10px;
+}
+.adpost select{
+    margin-right: 5%;
+    border-radius: 5px;
+    color: #000;
+}
+.adpost button{
+    width: 90%;
+    margin: 5px 5%;
+    background-color: aliceblue;
+    color: #228BE6;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 17px;
+    color: #000;
+}
+
+.hold{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

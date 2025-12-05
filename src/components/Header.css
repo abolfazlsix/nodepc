@@ -1,0 +1,78 @@
+.app-header {
+  width: 100%;
+  padding: 10px 15px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: fixed; /* همیشه ثابت بالا */
+  top: 0;
+  z-index: 1000;
+  direction: rtl;
+
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  height: 60px; /* ارتفاع ثابت */
+  box-sizing: border-box;
+}
+body > .container, 
+body > .main-content {
+  padding-top: 60px;
+} */
+
+
+ .header-right {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.header-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.header-username {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.header-title {
+  font-size: 10px;
+  font-weight: 700;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* چپ */
+.logout-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  text-align: center;
+
+}
+.logout-btn img{
+    width: 40px ;
+    height: 40px;
+}
+
+.logout-btn button {
+  width: 70px;
+  background-color: #0784c9;
+  color: #f8f8f8;
+  padding: 10px;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  outline: 0;
+} 
