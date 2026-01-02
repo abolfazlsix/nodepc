@@ -5,6 +5,7 @@
   margin: 40px auto;
   border-radius: 12px;
   position: relative;
+  direction: ltr;
 }
 
 .slider-inner {

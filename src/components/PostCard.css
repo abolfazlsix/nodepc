@@ -16,11 +16,8 @@
 }
 
 .post-image {
-  width: 100%;
+  width: auto;
   height: auto;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-top: 8px;
 }
 
 .like-btn {

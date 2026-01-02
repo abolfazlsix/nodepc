@@ -30,9 +30,9 @@ export default function PostList({ category, number }) {
   return (
     <div className="page-content with-footer-padding">
       <Heade currentUser={currentUser} />
-
+       
       {posts.map(p => (
-        <PostCard key={p.id} post={p} />
+        <PostCard  key={p.id} post={p} />
       ))}
 
       <FooterMobile />

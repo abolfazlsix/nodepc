@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import API from "../api";
 import "./Header.css";
 
 export default function Heade({ currentUser }) {
   const nav = useNavigate();
   const [profileUser, setProfileUser] = useState(null);
-
+const [a,setA]=useState(false)
+const ab=()=>{
+setA(!a)
+}
   useEffect(() => {
     async function load() {
       if (!currentUser?.username) return;
@@ -26,16 +29,27 @@ export default function Heade({ currentUser }) {
   if (!profileUser) {
     return (
       <div className="app-header">
+    
+<div className="d1">
+         <div onClick={()=>nav("/register")} className="holdmeno">ورود/ثبت نام</div>
+</div>
+<div className="d2">
         <div className="header-title">همایند</div>
+
+</div>  <div className="d3">
+       <img className="imglogo" src="https://s6.uupload.ir/files/photo_5879888826585517005_y_aa4q.jpg" alt="" />
+       
+      </div>
       </div>
     );
   }
-
+  
   return (
     <div className="app-header">
+ 
 
       {/* راست: عکس + نام کاربر */}
-      <div
+    {a||  <div
         className="header-right"
         onClick={() => nav(`/profile/${profileUser.username}`)}
       >
@@ -44,9 +58,9 @@ export default function Heade({ currentUser }) {
           className="header-avatar"
         />
         <span className="header-username">
-          {profileUser.firstName} {profileUser.lastName}
+          {/* {profileUser.firstName} {profileUser.lastName} */}
         </span>
-      </div>
+      </div>}
 
       {/* وسط: عنوان */}
       <div className="header-title">همایند</div>

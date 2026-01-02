@@ -11,6 +11,9 @@ import PostList from './components/PostList';
 import AddPost from './components/AddPost';
 import FooterMobile from './components/FooterMobile';
 import Heade from './components/Heade';
+import NoAccount from './components/NoAccount';
+import { Help } from './components/Help';
+
 function App(){
   const [token, setTok] = useState(localStorage.getItem('token'));
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')||'null'));
@@ -34,7 +37,8 @@ function App(){
           <Route path="/volunteer" element={<PostList category="volunteer" />} />
           <Route path="/war-damage" element={<PostList category="war_damage" />} />
           <Route path="/add-post" element={<AddPost onClose={()=>navigate(-1)} />} />
-
+            <Route path='no-account' element={<NoAccount/>}/>
+            <Route path='/help' element={<Help/>}/>
           
         </Routes>
      {/* <FooterMobilet/> */}

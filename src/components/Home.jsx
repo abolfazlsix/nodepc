@@ -12,6 +12,7 @@ import Heade from './Heade';
 import "./Home.css";
 import PostListScroll from './PostListScroll';
 import "./FooterStyles.css";
+import { Search } from './search';
 
 export default function Home({ user, logout }) {
 
@@ -40,6 +41,7 @@ export default function Home({ user, logout }) {
       <Heade currentUser={currentUser} />
 
       <div className="container">
+        <Search/>
         <CategorySlider/>
 
         <div className='humact'>
@@ -63,7 +65,7 @@ export default function Home({ user, logout }) {
         </div>
 
         <div className='poisterhom'>
-          <img src='https://s6.uupload.ir/files/5_copy_oef7.jpg' className='war-damage' onClick={()=>navigate('/war-damage')}/>
+          <img src='https://uploadkon.ir/uploads/b90b08_25IMG-20251208-195210-812.jpg' className='war-damage' onClick={()=>navigate('/war-damage')}/>
         </div>
 
         {/* --- بخش پست‌های برتر --- */}

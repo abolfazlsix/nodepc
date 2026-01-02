@@ -38,7 +38,7 @@ export default function PostListScroll({ user, logout }) {
 
   return (
     <>
-      <Heade currentUser={user} logout={logout} />
+   
 
       <div className="container">
         {categories.map((cat) => (

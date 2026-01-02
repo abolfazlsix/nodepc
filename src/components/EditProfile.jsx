@@ -8,20 +8,27 @@ export default function EditProfile({ user, onClose, onUpdate }) {
 
   const submit = async () => {
     try {
+
       const formData = new FormData();
-      formData.append('firstName', firstName);
-      formData.append('lastName', lastName);
-      if (avatar) formData.append('avatar', avatar);
+      formData.append("firstName", firstName);
+      formData.append("lastName", lastName);
+
+      if (avatar) {
+        formData.append("avatar", avatar); // فیلد صحیح برای بک‌اند تو
+      }
 
       const res = await API.put(`/users/${user.id}`, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' }
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
       });
 
       if (onUpdate) onUpdate(res.data.user);
       onClose();
-    } catch (e) {
-      console.log(e.response?.data || e);
-      alert('خطا در بروزرسانی');
+
+    } catch (err) {
+      console.log("ERROR:", err.response?.data || err);
+      alert("خطا در بروزرسانی پروفایل");
     }
   };
 
@@ -30,20 +37,20 @@ export default function EditProfile({ user, onClose, onUpdate }) {
       <h3>ویرایش پروفایل</h3>
 
       <input
-        className="input"
+      
         value={firstName}
         onChange={e => setFirstName(e.target.value)}
         placeholder="نام"
       />
 
       <input
-        className="input"
+        
         value={lastName}
         onChange={e => setLastName(e.target.value)}
         placeholder="نام خانوادگی"
       />
 
-      <input 
+      <input
         type="file"
         accept="image/*"
         onChange={e => setAvatar(e.target.files[0])}

@@ -7,8 +7,16 @@ export default function FooterMobile({ user }) {
   const location = useLocation();
 
   const activePath = location.pathname;
-
   const isProfileActive = activePath.startsWith("/profile");
+
+  // 🔵 تابع صحیح برای رفتن به پروفایل
+  const goToProfile = () => {
+    if (!user) {
+      nav("/no-account"); 
+      return;
+    }
+    nav(`/profile/${user.username}`);
+  };
 
   const iconBox = (active, icon, activeIcon, onClick) => {
     return (
@@ -47,7 +55,7 @@ export default function FooterMobile({ user }) {
         isProfileActive,
         "https://img.icons8.com/parakeet-line/48/000000/user-male-circle.png",
         "https://img.icons8.com/fluency-systems-filled/48/ffffff/user-male-circle.png",
-        () => user && nav(`/profile/${user.username}`)
+        ()=> nav(`profile/${user.username}`)
       )}
 
       {iconBox(

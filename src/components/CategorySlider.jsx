@@ -7,7 +7,7 @@ export default function CategorySlider() {
   const nav = useNavigate();
   const slides = [
     { image: "https://s6.uupload.ir/files/3_copy_y5w2.jpg", link: "/problems" },
-    { image: "https://s6.uupload.ir/files/4_copy_oayt.jpg", link: "/donation" },
+    { image: "https://uploadkon.ir/uploads/f3e508_25IMG-20251208-195021-729.jpg", link: "/donation" },
     { image: "https://s6.uupload.ir/files/1_copy_a2bk.jpg", link: "/volunteer" },
     { image: "https://s6.uupload.ir/files/2_copy_1qmw.jpg", link: "/war-damage" },
   ];

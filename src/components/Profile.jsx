@@ -1,123 +1,99 @@
-import React, { useEffect, useState } from 'react';
-import API from '../api';
-import { useParams, useNavigate } from 'react-router-dom';
-import EditProfile from './EditProfile';
-import FooterMobile from './FooterMobile';
-import "./FooterStyles.css";
-import "./prof.css"
-import Heade from './Heade';
-import PostCard from './PostCard';
+import React, { useEffect, useState } from "react";
+import API from "../api";
+import { useParams, useNavigate } from "react-router-dom";
 
-export default function Profile({ currentUser }) {
-  const { username } = useParams();
-  const [profileUser, setProfileUser] = useState(null);
-  const [openEdit, setOpenEdit] = useState(false);
-  const navigate = useNavigate();
+export default function Profile({ currentUser,post }) {
+  const [profileUser,setProfileUser]=useState(null);
+  const [loading,setLoading]=useState(true);
+  const {username} = useParams();
+   const navigate=useNavigate();
+   const [posts,setPosts]=useState(null);
+  useEffect(()=>{
+    function loadprofile(){
+      let usertag;
+      if(username){
+        usertag= username;
+      }else{
+        usertag= currentUser?.username;
+      } if(!usertag){
+        setLoading(false);
+      }
 
-  useEffect(() => {
-    async function load() {
-      const u = username || currentUser?.username;
-      const res = await API.get(`/users/${u}`);
-      setProfileUser(res.data.user);
+      API.get(`/users/${usertag}`).then((res)=>{
+       setProfileUser(res.data.user);
+       console.log(res.data.user)
+      }).catch((err)=>{
+       setProfileUser(null)
+      }).finally(()=>{
+          setLoading(false)
+      })
     }
-    load();
-  }, [username, currentUser]);
+loadprofile();
 
-  if (!profileUser) return <div className="container">در حال بارگذاری...</div>;
+  },[username,currentUser])
 
-  const medal = (n) => {
-    if (n > 100) return (
-      <div className='ma'>
-        <img className='m' src="https://s6.uupload.ir/files/screenshot_2025-12-05_015746_copy_b0a3.jpg" alt="" />
-        <p>مدال:سردار</p>
-      </div>
-    );
-    if (n > 50) return (
-      <div className='ma'>
-        <img className='m' src="https://s6.uupload.ir/files/screenshot_2025-12-05_015449_copy_37jj.jpg" alt="" />
-        <p>مدال:فرمانده</p>
-      </div>
-    );
-    return (
-      <div className='ma'>
-        <img className='m' src="https://s6.uupload.ir/files/screenshot_2025-12-05_015300_copy_xidp.jpg" alt="" />
-        <p>مدال:سرباز</p>
-      </div>
-    );
-  };
+  // حالت لودینگ
+  if (loading) {
+    return <p style={{ textAlign: "center" }}>در حال بارگذاری...</p>;
+  }
 
-  const handleLogout = () => {
-    localStorage.removeItem('user');
-    navigate('/login');
-  };
+  // اگر کاربر پیدا نشد
+  if (!profileUser) {
+    return <p style={{ textAlign: "center" }}>کاربری یافت نشد</p>;
+  }
 
-  const handleUpdate = (updatedUser) => {
-    setProfileUser(updatedUser); // بروزرسانی داده‌ها بعد از ادیت
-  };
+  // تشخیص اینکه پروفایل مال خود کاربر است یا نه
+  const isMe =
+    currentUser && currentUser.username === profileUser.username;
 
   return (
-    <div className="page-content with-footer-padding">
-      <div className="container">
-        <Heade currentUser={currentUser} />
+    <div style={{ maxWidth: 400, margin: "40px auto", textAlign: "center" }}>
+      
+      <img
+        src={`https://nodeproblem-3.onrender.com${profileUser.avatar || "/default-avatar.png"}`}
+        alt="avatar"
+        style={{
+          width: 100,
+          height: 100,
+          borderRadius: "50%",
+          objectFit: "cover",
+        }}
+      />
+       
+      <h3>
+        {profileUser.firstName} {profileUser.lastName}
+      </h3>
 
-        <div className='div'>
-          <img
-            src={`https://nodeproblem-3.onrender.com${profileUser.avatar || '/default-avatar.png'}`}
-            className="avatar"
-            style={{ width: 96, height: 96 }}
-          />
-          <div>
-            <h3>{profileUser.firstName} {profileUser.lastName}</h3>
-            <div>@{profileUser.username}</div>
-          </div>
+      <p>@{profileUser.username}</p>
+
+      {isMe ? (
+        <p style={{ color: "green" }}>این پروفایل شماست</p>
+      ) : (
+        <p style={{ color: "gray" }}>پروفایل کاربر دیگر</p>
+      )}
+
+      {isMe && (
+        <button
+          style={{ marginTop: 16 }}
+          onClick={() => navigate("/")}
+        >
+          بازگشت
+        </button>
+      )}
+      {profileUser.posts.map((m)=>{
+       return(
+         <div>
+          <div><h6>{m.title}</h6></div>
+          <div ><img style={{width:100,height:100}} src={`https://nodeproblem-3.onrender.com${m.image}`}/></div>
+          <div>{m.description}</div>
+          <button>like</button>
+
         </div>
+       )
+      })}
+        <div>
 
-        <div>{medal(profileUser.interactionsCount || 0)}</div>
-
-        {currentUser && currentUser.username === profileUser.username && (
-          <div className='holdbut' style={{ display: 'flex', gap: 10 }}>
-            <button onClick={() => setOpenEdit(true)} className="btn">ادیت پروفایل</button>
-            <button onClick={handleLogout} className="btn btn-secondary">خروج از حساب</button>
           </div>
-        )}
-
-        {openEdit && 
-          <EditProfile 
-            user={profileUser} 
-            onClose={() => setOpenEdit(false)} 
-            onUpdate={handleUpdate} 
-          />
-        }
-
-        <hr />
-        <h4>پست‌ها</h4>
-
-        {profileUser.posts?.map(p => (
-          <div key={p.id} style={{ marginBottom: 12 }}>
-            <PostCard post={p} />
-            {currentUser?.username === profileUser.username && (
-              <button
-                className="btn btn-danger"
-                style={{ background: '#228BE6', marginTop: 4 }}
-                onClick={async () => {
-                  if (!window.confirm("حذف پست؟")) return;
-                  try {
-                    await API.delete(`/posts/${p.id}`);
-                    const res = await API.get(`/users/${profileUser.username}`);
-                    setProfileUser(res.data.user);
-                  } catch (err) {
-                    alert("خطا در حذف پست");
-                  }
-                }}
-              >
-                حذف
-              </button>
-            )}
-          </div>
-        ))}
-
-        <FooterMobile />
-      </div>
     </div>
   );
 }

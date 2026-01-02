@@ -33,16 +33,17 @@ export default function PostCard({ post }) {
 
   return (
     <div className="card">
-      <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
-        <div style={{display:'flex',gap:8,alignItems:'center'}}>
-          <img src={avatarUrl} alt="avatar" className="avatar" />
+      <div    style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+        <div  style={{display:'flex',gap:8,alignItems:'center'}}>
+          <img 
+           src={avatarUrl} alt="avatar" className="avatar" />
           <div>
             <div style={{fontWeight:700}}>{post.User?.firstName} {post.User?.lastName}</div>
             <div style={{fontSize:12,color:'#777'}}>@{post.User?.username}</div>
           </div>
         </div>
 
-        <div style={{display:'flex', alignItems:'center', gap:8}}>
+        <div  style={{display:'flex', alignItems:'center', gap:8}}>
           <button 
             className={`like-btn ${liked ? "liked" : ""}`} 
             onClick={like}
@@ -55,16 +56,17 @@ export default function PostCard({ post }) {
           </button>
           <span>{likesCount}</span>
 
-          <img 
+          <img  onClick={()=>navigate(`/post/${post.id}`)}  
             src='https://img.icons8.com/parakeet-line/48/22C3E6/speech-bubble.png' 
-            onClick={()=>navigate(`/post/${post.id}`)} 
+            
             className="icon-btn"
             style={{width:24, height:24, cursor:'pointer'}}
           />
         </div>
       </div>
 
-      <h3>{post.title}</h3>
+     <div onClick={()=>navigate(`/post/${post.id}`)}  >
+       <h3>{post.title}</h3>
       <p style={{color:'#444'}}>
         {post.description?.slice(0,140)}
         {post.description?.length > 140 ? '...' : ''}
@@ -77,6 +79,7 @@ export default function PostCard({ post }) {
           alt="post" 
         />
       )}
+     </div>
     </div>
   );
 }

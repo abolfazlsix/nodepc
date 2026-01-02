@@ -73,4 +73,6 @@ body{
 
 body {
   font-family: "IRANSans", sans-serif;
+  transition:ease-in-out 1.2s;
+  user-select: none;
 }
